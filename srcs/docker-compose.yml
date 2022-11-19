@@ -7,7 +7,7 @@ networks:
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb:latest
+    image: mariadb:v_final
     build:
       context: ./requirements/mariadb
       args:
@@ -23,7 +23,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: wordpress:latest
+    image: wordpress:v_final
     build: ./requirements/wordpress
     networks:
       - inception
@@ -36,7 +36,7 @@ services:
 
   nginx:
     container_name: nginx
-    image: nginx:latest
+    image: nginx:v_final
     build: ./requirements/nginx
     ports:
       - "443:443"
