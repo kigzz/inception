@@ -2,7 +2,7 @@ all:
 	@sudo hostsed add 127.0.0.1 bpouchep.42.fr && echo "successfully added bpouchep.42.fr to /etc/hosts"
 	@sudo mkdir -p /home/bpouchep/data/wordpress
 	@sudo mkdir -p /home/bpouchep/data/mariadb
-	sudo docker compose -f ./srcs/docker-compose.yml up -d
+	sudo docker compose -f ./srcs/docker-compose.yml up -d --build
 
 clean:
 	sudo docker compose -f ./srcs/docker-compose.yml down --rmi all -v
