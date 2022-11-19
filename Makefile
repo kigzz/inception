@@ -9,13 +9,15 @@ clean:
 
 fclean: clean
 	@sudo hostsed rm 127.0.0.1 bpouchep.42.fr && echo "successfully removed bpouchep.42.fr to /etc/hosts"
-	@sudo docker stop $(sudo docker ps -qa) \
-   	@sudo docker rm $(sudo docker ps -qa) \
-   	@sudo docker rmi -f (sudo docker images -qa) \
-   	@sudo docker volume rm (sudo docker volume ls -q) \
-   	@sudo docker network rm (sudo docker network ls -q) \
-   	@sudo rm -rf /home/bpouchep/data/wordpress \
-   	@sudo rm -rf /home/bpouchep/data/mysql \
+	@if [ -d "/home/bpouchep/data/wordpress" ]; then \
+	sudo rm -rf /home/bpouchep/data/wordpress/* && \
+	echo "successfully removed all contents from /home/bpouchep/data/wordpress/"; \
+	fi;
+
+	@if [ -d "/home/bpouchep/data/mariadb" ]; then \
+	sudo rm -rf /home/bpouchep/data/mariadb/* && \
+	echo "successfully removed all contents from /home/bpouchep/data/mariadb/"; \
+	fi;
 
 re: fclean all
 
